@@ -1,1 +1,105 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The World Is Lying</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #101426;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .game {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #7dd3fc;
+    }
+
+    .world {
+      background: #1e293b;
+      border: 2px solid #475569;
+      border-radius: 15px;
+      padding: 30px 15px;
+      min-height: 250px;
+    }
+
+    button {
+      padding: 12px 20px;
+      margin: 6px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #3b82f6;
+    }
+
+    #message {
+      margin-top: 20px;
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game">
+    <h1>🌌 THE WORLD IS LYING</h1>
+
+    <div class="world">
+      <h2 id="level">Level 1</h2>
+      <p id="story">
+        You wake up in a mysterious village.
+      </p>
+
+      <button onclick="explore()">Explore</button>
+      <button onclick="rest()">Rest</button>
+
+      <p id="message">Choose your action.</p>
+    </div>
+  </div>
+
+  <script>
+    let level = 1;
+
+    function explore() {
+      if (level < 10) {
+        level++;
+        document.getElementById("level").textContent =
+          "Level " + level;
+
+        document.getElementById("story").textContent =
+          "The world changes... something is watching you.";
+
+        document.getElementById("message").textContent =
+          "Level increased! Keep exploring.";
+      } else {
+        document.getElementById("message").textContent =
+          "World 1 complete!";
+      }
+    }
+
+    function rest() {
+      document.getElementById("message").textContent =
+        "You rested. But the world is still watching...";
+    }
+  </script>
+
+</body>
+</html>
