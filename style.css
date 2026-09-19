@@ -189,3 +189,185 @@ footer {
     padding: 14px;
   }
 }
+
+/* WORLD MAP */
+
+.map-panel {
+  margin-bottom: 16px;
+  padding: 20px;
+  border: 1px solid #394568;
+  border-radius: 20px;
+  background: #111a30;
+  text-align: center;
+}
+
+.map-panel h3 {
+  color: #facc15;
+  margin-top: 0;
+}
+
+#game-map {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  height: 220px;
+  margin: auto;
+  overflow: hidden;
+  border: 2px solid #52638e;
+  border-radius: 15px;
+
+  background:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px),
+    radial-gradient(circle at center, #33456c, #111827);
+
+  background-size: 30px 30px;
+}
+
+#game-map::before {
+  content: "🌲     🌲        🏚️        🌲     🌲";
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  font-size: 28px;
+  letter-spacing: 12px;
+  opacity: 0.8;
+}
+
+#game-map::after {
+  content: "🌫️     🌫️     🌫️     🌫️";
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  font-size: 22px;
+  opacity: 0.5;
+}
+
+#player {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+
+  padding: 8px;
+  border: 2px solid #7dd3fc;
+  border-radius: 50%;
+  background: #1e3a8a;
+  font-size: 25px;
+
+  box-shadow: 0 0 20px #38bdf8;
+}
+
+#map-message {
+  margin-bottom: 0;
+  color: #a5b4fc;
+  font-size: 13px;
+}
+
+/* MOBILE MOVEMENT CONTROLS */
+
+.movement-controls {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.movement-controls button {
+  width: 58px;
+  height: 48px;
+  margin: 5px;
+  padding: 0;
+
+  border: 1px solid #6478b5;
+  border-radius: 12px;
+
+  background: #293b70;
+  color: white;
+  font-size: 22px;
+
+  box-shadow: 0 4px 12px #0004;
+}
+
+.movement-controls button:hover {
+  background: #5865f2;
+  transform: scale(1.05);
+}
+
+.movement-controls button:active {
+  transform: scale(0.95);
+}
+
+@media (min-width: 700px) {
+  .movement-controls button {
+    width: 65px;
+    height: 52px;
+  }
+}
+
+/* HIDDEN LOCATIONS */
+
+.location {
+  position: absolute;
+  z-index: 2;
+
+  padding: 8px;
+  border: 2px solid #facc15;
+  border-radius: 12px;
+
+  background: #1e293b;
+  font-size: 24px;
+
+  box-shadow: 0 0 15px #facc1544;
+  transition: 0.2s;
+}
+
+.location:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+  box-shadow: 0 0 25px #facc15;
+}
+
+.village {
+  left: 15%;
+  top: 25%;
+}
+
+.forest {
+  right: 15%;
+  top: 20%;
+}
+
+.temple {
+  left: 45%;
+  top: 15%;
+}
+
+.well {
+  left: 25%;
+  bottom: 20%;
+}
+
+/* DISCOVERY POPUP */
+
+.discovery-popup {
+  display: none;
+  margin-top: 16px;
+  padding: 20px;
+  border: 2px solid #facc15;
+  border-radius: 15px;
+  background: #202b4a;
+  text-align: center;
+  box-shadow: 0 0 25px #facc1533;
+}
+
+.discovery-popup h3 {
+  color: #facc15;
+}
+
+.discovery-popup p {
+  color: #dbeafe;
+  line-height: 1.6;
+}
+
