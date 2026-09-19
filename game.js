@@ -292,4 +292,117 @@ function restartGame() {
 }
 
 render();
+
+/* CHARACTER MOVEMENT */
+
+const playerCharacter = document.getElementById("player");
+
+let playerPosition = {
+  x: 50,
+  y: 35
+};
+
+const movementSpeed = 5;
+
+function movePlayer(direction) {
+  if (state.ended) return;
+
+  if (direction === "up") {
+    playerPosition.y += movementSpeed;
+  }
+
+  if (direction === "down") {
+    playerPosition.y -= movementSpeed;
+  }
+
+  if (direction === "left") {
+    playerPosition.x -= movementSpeed;
+  }
+
+  if (direction === "right") {
+    playerPosition.x += movementSpeed;
+  }
+
+  playerPosition.x = Math.max(
+    5,
+    Math.min(95, playerPosition.x)
+  );
+
+  playerPosition.y = Math.max(
+    5,
+    Math.min(85, playerPosition.y)
+  );
+
+  playerCharacter.style.left =
+    playerPosition.x + "%";
+
+  playerCharacter.style.bottom =
+    playerPosition.y + "%";
+
+  document.getElementById("map-message").textContent =
+    "You are exploring the unknown world...";
+}
+ 
+document.addEventListener("keydown", function(event) {
+  const key = event.key.toLowerCase();
+
+  if (key === "w" || key === "arrowup") {
+    movePlayer("up");
+    checkNearbyLocations();
+  }
+
+  if (key === "s" || key === "arrowdown") {
+    movePlayer("down");
+  }
+
+  if (key === "a" || key === "arrowleft") {
+    movePlayer("left");
+  }
+
+  if (key === "d" || key === "arrowright") {
+    movePlayer("right");
+  }
+});
+
   
+/* INTERACTIVE LOCATIONS */
+
+const locations = document.querySelectorAll(".location");
+
+locations.forEach(location => {
+  location.addEventListener("click", () => {
+
+    if (state.ended) return;
+
+    const name = location.classList[1];
+
+    if (name === "village") {
+      showMessage(
+        "🏚️ Village: Everyone is smiling, but nobody has a shadow."
+      );
+    }
+
+    if (name === "forest") {
+      showMessage(
+        "🌲 Forest: Something is moving between the trees."
+      );
+    }
+
+    if (name === "temple") {
+      showMessage(
+        "🏛️ Temple: An ancient secret is hidden inside."
+      );
+    }
+
+    if (name === "well") {
+      showMessage(
+        "🕳️ Well: You can hear someone calling your name."
+      );
+    }
+
+    document.getElementById("map-message").textContent =
+      "You discovered a mysterious location...";
+
+  });
+});
+
