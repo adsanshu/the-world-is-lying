@@ -341,14 +341,15 @@ function movePlayer(direction) {
 
   document.getElementById("map-message").textContent =
     "You are exploring the unknown world...";
+  checkNearbyLocations();
 }
- 
+  
 document.addEventListener("keydown", function(event) {
   const key = event.key.toLowerCase();
 
   if (key === "w" || key === "arrowup") {
     movePlayer("up");
-    checkNearbyLocations();
+     
   }
 
   if (key === "s" || key === "arrowdown") {
@@ -405,4 +406,19 @@ locations.forEach(location => {
 
   });
 });
+
+/* DISCOVERY POPUP FUNCTIONS */
+
+function showDiscovery(text) {
+  const popup = document.getElementById("discovery-popup");
+  const discoveryText = document.getElementById("discovery-text");
+
+  discoveryText.textContent = text;
+  popup.style.display = "block";
+}
+
+function closeDiscovery() {
+  document.getElementById("discovery-popup").style.display =
+    "none";
+}
 
