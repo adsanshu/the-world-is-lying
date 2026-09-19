@@ -4,102 +4,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>The World Is Lying</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
 
-    body {
-      margin: 0;
-      background: #101426;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
-
-    .game {
-      max-width: 700px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    h1 {
-      color: #7dd3fc;
-    }
-
-    .world {
-      background: #1e293b;
-      border: 2px solid #475569;
-      border-radius: 15px;
-      padding: 30px 15px;
-      min-height: 250px;
-    }
-
-    button {
-      padding: 12px 20px;
-      margin: 6px;
-      border: none;
-      border-radius: 8px;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    button:hover {
-      background: #3b82f6;
-    }
-
-    #message {
-      margin-top: 20px;
-      color: #facc15;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="game">
-    <h1>🌌 THE WORLD IS LYING</h1>
+  <main class="game-shell">
 
-    <div class="world">
-      <h2 id="level">Level 1</h2>
-      <p id="story">
-        You wake up in a mysterious village.
+    <header>
+      <p class="eyebrow">A MYSTERY SURVIVAL PROTOTYPE</p>
+
+      <h1>🌌 THE WORLD IS LYING</h1>
+
+      <p class="subtitle">
+        Trust nothing. Observe everything.
       </p>
+    </header>
 
-      <button onclick="explore()">Explore</button>
-      <button onclick="rest()">Rest</button>
+    <section class="hud">
 
-      <p id="message">Choose your action.</p>
-    </div>
-  </div>
+      <div>
+        <span>Level</span>
+        <strong id="level">1</strong>
+      </div>
 
-  <script>
-    let level = 1;
+      <div>
+        <span>Health</span>
+        <strong id="health">100/100</strong>
+      </div>
 
-    function explore() {
-      if (level < 10) {
-        level++;
-        document.getElementById("level").textContent =
-          "Level " + level;
+      <div>
+        <span>Sanity</span>
+        <strong id="sanity">100</strong>
+      </div>
 
-        document.getElementById("story").textContent =
-          "The world changes... something is watching you.";
+      <div>
+        <span>Truth</span>
+        <strong id="truth">0%</strong>
+      </div>
 
-        document.getElementById("message").textContent =
-          "Level increased! Keep exploring.";
-      } else {
-        document.getElementById("message").textContent =
-          "World 1 complete!";
-      }
-    }
+    </section>
 
-    function rest() {
-      document.getElementById("message").textContent =
-        "You rested. But the world is still watching...";
-    }
-  </script>
+    <section class="panel">
+
+      <div class="scene">
+
+        <span id="location">
+          Mysterious Village
+        </span>
+
+        <h2 id="scene-title">
+          The Village That Smiles
+        </h2>
+
+        <p id="story">
+          You wake up in a silent village.
+          Every person is smiling,
+          but nobody has a shadow.
+        </p>
+
+      </div>
+
+      <div class="choices" id="choices"></div>
+
+      <div class="log">
+
+        <h3>World Message</h3>
+
+        <p id="message">
+          Choose an action to begin.
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="inventory panel">
+
+      <h3>Inventory</h3>
+
+      <div id="inventory">
+        Empty
+      </div>
+
+    </section>
+
+    <footer>
+
+      <button class="secondary" onclick="restartGame()">
+        ↻ Restart Game
+      </button>
+
+      <span id="progress">
+        Chapter 1 • 0/5 discoveries
+      </span>
+
+    </footer>
+
+  </main>
+
+  <script src="game.js"></script>
 
 </body>
 </html>
